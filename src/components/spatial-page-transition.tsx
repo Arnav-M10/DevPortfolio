@@ -7,11 +7,12 @@ type TransitionDirection = "left" | "right" | "up" | "down";
 
 const routeOrder = [
   "/about",
+  "/resume",
   "/projects",
-  "/work",
-  "/awards",
+  "/experiences",
   "/pics",
   "/contact",
+  "/resume",
 ] as const;
 
 function getDirection(from: string, to: string): TransitionDirection {

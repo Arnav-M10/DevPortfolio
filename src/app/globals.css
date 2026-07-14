@@ -949,7 +949,68 @@ h1 .name-mauve {
 }
 
 .quantum-cat.is-appearing {
-  animation: cat-materialize 240ms steps(4, end) both;
+  animation: cat-materialize 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.quantum-cat.portal-entering {
+  animation: cat-portal-in 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.quantum-cat.portal-exiting {
+  animation: cat-portal-out 500ms cubic-bezier(0.7, 0, 0.84, 0) both;
+}
+
+@keyframes cat-portal-in {
+  0% { opacity: 0; filter: blur(5px); transform: scale(0.12) rotate(-12deg); }
+  35% { opacity: 1; filter: blur(0); transform: scale(1.18) rotate(5deg); }
+  65% { transform: scale(0.92) rotate(-2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@keyframes cat-portal-out {
+  0% { opacity: 1; transform: scale(1) rotate(0); }
+  45% { opacity: 1; transform: scale(1.16) rotate(-6deg); }
+  100% { opacity: 0; filter: blur(5px); transform: scale(0.08) rotate(18deg); }
+}
+
+.quantum-portal-burst {
+  position: fixed;
+  z-index: 20;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  animation: portal-burst 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.portal-core {
+  position: absolute;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid var(--baby-blue);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 5px rgb(147 197 253 / 0.12), 0 0 22px rgb(147 197 253 / 0.5);
+}
+
+.portal-spark {
+  position: absolute;
+  width: 0.28rem;
+  height: 0.28rem;
+  background: var(--mauve);
+  transform: translate(-50%, -50%) rotate(calc(var(--spark-index) * 36deg)) translateY(-1.2rem);
+  animation: portal-spark 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes portal-burst {
+  0% { opacity: 0; transform: scale(0.2); }
+  18% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.7); }
+}
+
+@keyframes portal-spark {
+  0% { opacity: 0; transform: translate(-50%, -50%) rotate(calc(var(--spark-index) * 36deg)) translateY(-0.35rem); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -50%) rotate(calc(var(--spark-index) * 36deg)) translateY(-2.4rem); }
 }
 
 .cat-thought {
@@ -968,6 +1029,70 @@ h1 .name-mauve {
     color 120ms ease,
     opacity 120ms steps(2, end),
     transform 120ms steps(2, end);
+}
+
+.cat-recursion {
+  position: absolute;
+  z-index: 5;
+  top: -2.42rem;
+  left: 0.35rem;
+  padding: 0.5rem 0.75rem;
+  color: #0b0d14;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  max-width: calc(100vw - 1rem);
+  background: var(--baby-blue);
+  border: 2px solid var(--mauve);
+  box-shadow: 3px 3px 0 var(--mauve);
+  image-rendering: pixelated;
+  animation: recursion-pop 260ms steps(3, end) both;
+}
+
+.cat-recursion::after {
+  display: none;
+}
+
+.cat-trail {
+  position: absolute;
+  z-index: 6;
+  left: 0.42rem;
+  bottom: -0.44rem;
+  display: flex;
+  gap: 0.22rem;
+  align-items: flex-start;
+}
+
+.cat-trail i {
+  display: block;
+  width: 0.28rem;
+  height: 0.28rem;
+  background: var(--mauve);
+}
+
+.cat-trail i + i {
+  margin-top: 0.22rem;
+  opacity: 0.8;
+}
+
+.cat-recursion.recursion-left {
+  right: 0.35rem;
+  left: auto;
+}
+
+.cat-recursion.recursion-left::after {
+  display: none;
+}
+
+.cat-recursion.recursion-left .cat-trail {
+  right: 0.42rem;
+  left: auto;
+  flex-direction: row-reverse;
+}
+
+@keyframes recursion-pop {
+  from { opacity: 0; transform: scale(0.35) translateY(0.35rem); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .emotion-curious .cat-thought,
@@ -1309,6 +1434,88 @@ h1 .name-mauve {
   color: var(--muted);
   font-size: 1rem;
   line-height: 1.8;
+}
+
+.experience-subtabs {
+  margin-top: 2.25rem;
+}
+
+.experience-tab-list {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1.35rem;
+}
+
+.experience-tab-list button {
+  display: inline-flex;
+  min-height: 2.1rem;
+  align-items: center;
+  padding: 0.5rem 0.9rem;
+  color: #c9ccd6;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: rgb(14 16 24 / 0.88);
+  border: 1px solid #30333f;
+  border-radius: 999px;
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.experience-tab-list button.is-active {
+  color: #0b0d14;
+  background: var(--baby-blue);
+  border-color: var(--baby-blue);
+}
+
+.experience-tab-list button:hover {
+  color: var(--mauve);
+  border-color: var(--mauve);
+  transform: translateY(-1px);
+}
+
+.experience-tab-list button.is-active:hover {
+  color: #0b0d14;
+  background: var(--mauve);
+  border-color: var(--mauve);
+}
+
+.experience-notes {
+  display: grid;
+  gap: 0.65rem;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.experience-notes p {
+  margin: 0;
+}
+
+.experience-note-enter {
+  animation: experience-note-in 420ms cubic-bezier(0.22, 0.8, 0.22, 1) both;
+}
+
+.experience-notes strong {
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+@keyframes experience-note-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.65rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes orbit-a-spin {

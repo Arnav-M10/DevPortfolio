@@ -8,9 +8,9 @@ import { QuantumGlyph } from "@/components/quantum-glyph";
 
 const navigation = [
   { href: "/about", label: "about" },
+  { href: "/resume", label: "resume" },
   { href: "/projects", label: "projects" },
-  { href: "/work", label: "work" },
-  { href: "/awards", label: "awards" },
+  { href: "/experiences", label: "experiences" },
   { href: "/pics", label: "pics" },
   { href: "/contact", label: "contact" },
 ] as const;

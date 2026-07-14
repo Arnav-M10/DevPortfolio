@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { GeistMono } from "geist/font/mono";
 
 import { SiteHeader } from "@/components/site-header";
-import { QuantumCat } from "@/components/quantum-cat";
+import { LandingQuantumCat } from "@/components/landing-quantum-cat";
+import { QuantumPortal } from "@/components/quantum-portal";
 import { SpatialPageTransition } from "@/components/spatial-page-transition";
 import { VisitorCount } from "@/components/visitor-count";
 
@@ -21,7 +22,8 @@ export default function RootLayout({
     <html lang="en" className={GeistMono.variable}>
       <body>
         <SiteHeader />
-        <QuantumCat />
+        <LandingQuantumCat />
+        <QuantumPortal />
         <VisitorCount />
         <SpatialPageTransition>{children}</SpatialPageTransition>
       </body>

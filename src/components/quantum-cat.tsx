@@ -74,7 +74,7 @@ function easeInOut(value: number) {
     : 1 - Math.pow(-2 * value + 2, 3) / 2;
 }
 
-export function QuantumCat() {
+export function QuantumCat({ exiting = false }: { exiting?: boolean }) {
   const catRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef(0.72);
   const positionRef = useRef<Point | null>(null);
@@ -85,11 +85,25 @@ export function QuantumCat() {
   const interactionUntilRef = useRef(0);
   const timersRef = useRef<number[]>([]);
   const pointerRef = useRef<Point | null>(null);
+  const recursingRef = useRef(false);
   const [emotion, setEmotion] = useState<CatEmotion>("idle");
   const [phase, setPhase] = useState<CatPhase>("idle");
   const [facing, setFacing] = useState<CatFacing>("right");
   const [pose, setPose] = useState<CatPose>("sitting");
   const [isWatching, setIsWatching] = useState(false);
+  const [isRecursing, setIsRecursing] = useState(false);
+  const [recursionSide, setRecursionSide] = useState<"left" | "right">("right");
+
+  useEffect(() => {
+    if (!exiting) return;
+    const rect = catRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    window.dispatchEvent(
+      new CustomEvent("quantum-cat-burst", {
+        detail: { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 },
+      }),
+    );
+  }, [exiting]);
 
   const updateEmotion = useCallback((nextEmotion: CatEmotion) => {
     if (emotionRef.current === nextEmotion) return;
@@ -183,7 +197,28 @@ export function QuantumCat() {
   );
 
   useEffect(() => {
+    const savedProgress = window.sessionStorage.getItem("quantum-cat-progress");
+    if (savedProgress) {
+      const parsedProgress = Number(savedProgress);
+      if (Number.isFinite(parsedProgress)) progressRef.current = normalizeProgress(parsedProgress);
+    }
+
     placeAtProgress(progressRef.current);
+    const point = positionRef.current;
+    if (point) {
+      window.setTimeout(
+        () => {
+          const rect = catRef.current?.getBoundingClientRect();
+          const center = rect
+            ? { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 }
+            : point;
+          window.dispatchEvent(new CustomEvent("quantum-cat-burst", { detail: center }));
+        },
+        30,
+      );
+    }
+    setPhase("appearing");
+    schedule(() => setPhase("idle"), 320);
     if (motionIsReduced()) {
       updateEmotion("sleepy");
       return;
@@ -264,6 +299,12 @@ export function QuantumCat() {
           continue;
         }
 
+        if (recursingRef.current) {
+          setPose("sitting");
+          await wait(120);
+          continue;
+        }
+
         if (Math.random() < 0.12) directionRef.current *= -1;
         const hopCount = Math.random() < 0.32 ? 2 : 1;
 
@@ -302,6 +343,7 @@ export function QuantumCat() {
 
     return () => {
       disposed = true;
+      window.sessionStorage.setItem("quantum-cat-progress", String(progressRef.current));
       window.cancelAnimationFrame(frame);
       window.removeEventListener("resize", handleResize);
     };
@@ -349,6 +391,18 @@ export function QuantumCat() {
       if (!(target instanceof Element) || !target.closest("a")) return;
       interactionUntilRef.current = Date.now() + 900;
       updateEmotion("happy");
+      if (target.closest(".constant-mark")) {
+        const rect = catRef.current?.getBoundingClientRect();
+        setRecursionSide(
+          rect && rect.right > window.innerWidth - 240 ? "left" : "right",
+        );
+        recursingRef.current = true;
+        setIsRecursing(true);
+        window.setTimeout(() => {
+          recursingRef.current = false;
+          setIsRecursing(false);
+        }, 1600);
+      }
     };
 
     window.addEventListener("pointermove", handlePointerMove, { passive: true });
@@ -373,10 +427,19 @@ export function QuantumCat() {
   return (
     <div
       ref={catRef}
-      className={`quantum-cat emotion-${emotion} is-${phase} pose-${pose}${isWatching ? " is-watching" : ""}`}
+      className={`quantum-cat emotion-${emotion} is-${phase} pose-${pose}${isWatching ? " is-watching" : ""}${exiting ? " portal-exiting" : " portal-entering"}`}
       aria-hidden="true"
     >
       <span className="cat-thought">{EMOTION_GLYPHS[emotion]}</span>
+      {isRecursing ? (
+        <span className={`cat-recursion recursion-${recursionSide}`}>
+          recursion!
+          <span className="cat-trail" aria-hidden="true">
+            <i />
+            <i />
+          </span>
+        </span>
+      ) : null}
       <span className="cat-probability">···</span>
       <span className={`cat-facing cat-facing-${facing}`}>
         <span className="pixel-cat">
