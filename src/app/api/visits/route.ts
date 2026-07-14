@@ -1,5 +1,5 @@
 const COUNTER_BASE =
-  "https://api.counterapi.dev/v1/akhil-eigenstate-7f3c/landing-visitors";
+  "https://api.counterapi.dev/v1/arnav-eigenstate-7f3c/landing-visitors";
 
 function extractCount(payload: unknown): number | null {
   if (typeof payload === "number" && Number.isFinite(payload)) return payload;

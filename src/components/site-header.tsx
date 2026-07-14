@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { QuantumGlyph } from "@/components/quantum-glyph";
 
@@ -16,22 +17,12 @@ const navigation = [
 
 const socialLinks = [
   {
-    href: "https://www.linkedin.com/in/placeholder",
+    href: "https://www.linkedin.com/in/arnavm10/",
     label: "LinkedIn",
     icon: "linkedin",
   },
   {
-    href: "mailto:placeholder@example.com",
-    label: "Email",
-    icon: "email",
-  },
-  {
-    href: "https://scholar.google.com/",
-    label: "Google Scholar",
-    icon: "scholar",
-  },
-  {
-    href: "https://github.com/placeholder",
+    href: "https://github.com/Arnav-M10/",
     label: "GitHub",
     icon: "github",
   },
@@ -40,6 +31,25 @@ const socialLinks = [
 export function SiteHeader() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const [centralTime, setCentralTime] = useState("--:--:--");
+
+  useEffect(() => {
+    const updateCentralTime = () => {
+      setCentralTime(
+        new Intl.DateTimeFormat("en-US", {
+          timeZone: "America/Chicago",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        }).format(new Date()),
+      );
+    };
+
+    updateCentralTime();
+    const timer = window.setInterval(updateCentralTime, 1000);
+    return () => window.clearInterval(timer);
+  }, []);
 
   return (
     <header className={`site-header ${isHome ? "is-home" : "is-route"}`}>
@@ -47,19 +57,19 @@ export function SiteHeader() {
         <Link
           className="constant-mark"
           href="/"
-          aria-label="eigenstate home"
+          aria-label="ArnavMittal home"
           aria-hidden={!isHome}
           tabIndex={isHome ? 0 : -1}
         >
           <span className="constant-equation" aria-hidden="true">
-            α⁻¹ ≈ 137
+            {centralTime} CST
           </span>
-          <small>fine structure / still unexplained</small>
+          <small>UTC−6</small>
         </Link>
         <Link
           className="route-home-hero"
           href="/"
-          aria-label="Return to eigenstate home"
+          aria-label="Return to ArnavMittal home"
           aria-hidden={isHome}
           tabIndex={isHome ? -1 : 0}
         >
@@ -68,9 +78,9 @@ export function SiteHeader() {
           </span>
           <span className="route-home-copy">
             <span className="route-home-title">
-              <span>eigen</span>state
+              <span className="name-blue">Arnav</span><span className="name-mauve">Mittal</span>
             </span>
-            <small>home / ground state</small>
+            <small>basepoint</small>
           </span>
         </Link>
       </div>

@@ -42,7 +42,7 @@ export function VisitorCount() {
       title="Approximate unique browsers"
     >
       <span className="visitor-dot" aria-hidden="true" />
-      <span>visitors</span>
+      <span>lifetime visitors:</span>
       <strong>{count === null ? "····" : count.toLocaleString("en-US")}</strong>
     </aside>
   );

@@ -9,9 +9,9 @@ import { VisitorCount } from "@/components/visitor-count";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "eigenstate — akhil",
+  title: "eigenstate — Arnav Mittal",
   description:
-    "A minimal placeholder portfolio about mathematical physics, scientific computing, and small useful programs.",
+    "Arnav Mittal — a student interested in theoretical physics, mathematics, technology, and more.",
 };
 
 export default function RootLayout({

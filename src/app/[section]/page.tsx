@@ -6,37 +6,37 @@ const sections = {
     title: "about",
     index: "01",
     reference: "worldline",
-    copy: "a placeholder trajectory through study, research, and whatever comes next.",
+    copy: "arnav is a student at the Texas Academy of Mathematics and Science, interested in theoretical physics, mathematics, technology, and more.",
   },
   projects: {
     title: "projects",
     index: "02",
     reference: "things made",
-    copy: "selected placeholder experiments in numerical physics, mathematical software, and useful little tools.",
+    copy: "a growing collection of numerical physics experiments, mathematical software, and useful little tools.",
   },
   work: {
     title: "work",
     index: "03",
     reference: "action",
-    copy: "selected placeholder work in numerical physics, scientific software, and useful little tools.",
+    copy: "notes from building, learning, and turning questions into small working systems.",
   },
   awards: {
     title: "awards",
     index: "04",
     reference: "small wins",
-    copy: "a placeholder shelf for scholarships, competitions, recognitions, and other pleasant eigenvalues.",
+    copy: "a quiet shelf for scholarships, competitions, recognitions, and other pleasant eigenvalues.",
   },
   pics: {
     title: "pics",
     index: "05",
     reference: "captured photons",
-    copy: "placeholder photographs, diagrams, blackboards, and small observations from outside the terminal.",
+    copy: "photographs, diagrams, blackboards, and small observations from outside the terminal.",
   },
   contact: {
     title: "contact",
     index: "06",
     reference: "signal",
-    copy: "the placeholder channel is open at placeholder@example.com.",
+    copy: "the channel is open at arnav.mit10@gmail.com.",
   },
 } as const;
 

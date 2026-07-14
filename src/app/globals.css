@@ -91,7 +91,7 @@ figure {
 
 .constant-equation {
   color: var(--baby-blue);
-  font-size: 0.8rem;
+  font-size: 1rem;
   letter-spacing: 0.05em;
   transition:
     color 180ms ease,
@@ -100,7 +100,7 @@ figure {
 
 .constant-mark small {
   color: var(--quiet);
-  font-size: 0.46rem;
+  font-size: 0.78rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -172,6 +172,15 @@ figure {
 
 .route-home-title span {
   color: #ffffff;
+}
+
+.route-home-title .name-blue {
+  color: var(--baby-blue);
+}
+
+.route-home-title .name-mauve {
+  color: var(--mauve);
+  margin-left: 0.12em;
 }
 
 .route-home-copy small {
@@ -270,7 +279,7 @@ figure {
   inset: 0;
   display: grid;
   font-family: Arial, sans-serif;
-  font-size: 0.68rem;
+  font-size: 0.8rem;
   font-weight: 700;
   content: "in";
   border: 1px solid currentcolor;
@@ -455,11 +464,12 @@ figure {
   min-width: 0;
 }
 
-.eigen-equation {
+.eigen-note {
   margin-bottom: 0.75rem;
   color: var(--mauve);
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
+  font-size: 0.94rem;
+  letter-spacing: 0;
+  word-spacing: -0.05em;
 }
 
 h1 {
@@ -472,6 +482,15 @@ h1 {
 
 h1 span {
   color: #ffffff;
+}
+
+h1 .name-blue {
+  color: var(--baby-blue);
+}
+
+h1 .name-mauve {
+  color: var(--mauve);
+  margin-left: -0.08em;
 }
 
 .intro {
@@ -1240,27 +1259,24 @@ h1 span {
   right: 1.5rem;
   bottom: 1.2rem;
   display: inline-flex;
-  gap: 0.45rem;
+  gap: 0.25rem;
   align-items: center;
   color: #666772;
-  font-size: 0.56rem;
+  font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .visitor-counter strong {
-  min-width: 3rem;
+  min-width: 0;
   color: #b8bbc5;
-  font-size: 0.62rem;
+  font-size: 0.82rem;
   font-weight: 500;
   text-align: right;
 }
 
 .visitor-dot {
-  width: 0.26rem;
-  height: 0.26rem;
-  background: var(--baby-blue);
-  box-shadow: 0 0 0 3px rgb(147 197 253 / 0.08);
+  display: none;
 }
 
 .route-content {
@@ -1461,7 +1477,8 @@ h1 span {
   }
 
   .constant-mark small {
-    display: none;
+    display: block;
+    font-size: 0.66rem;
   }
 
   .route-home-hero {
@@ -1513,7 +1530,7 @@ h1 span {
   }
 
   .constant-equation {
-    font-size: 0.68rem;
+    font-size: 0.78rem;
   }
 
   .route-home-hero {
@@ -1588,7 +1605,7 @@ h1 span {
     display: none;
   }
 
-  .eigen-equation {
+  .eigen-note {
     margin-bottom: 0.45rem;
     font-size: 0.54rem;
   }
@@ -1675,13 +1692,13 @@ h1 span {
   .visitor-counter {
     right: 0.85rem;
     bottom: 0.75rem;
-    gap: 0.32rem;
-    font-size: 0.49rem;
+    gap: 0.2rem;
+    font-size: 0.77rem;
   }
 
   .visitor-counter strong {
-    min-width: 2.5rem;
-    font-size: 0.54rem;
+    min-width: 0;
+    font-size: 0.9rem;
   }
 
   .route-content h2 {

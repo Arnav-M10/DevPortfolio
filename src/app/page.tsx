@@ -4,17 +4,17 @@ const fieldNotes = [
   {
     index: "01",
     label: "studying",
-    value: "math + physics",
+    value: "Texas Academy of Mathematics and Science",
   },
   {
     index: "02",
     label: "building",
-    value: "small programs that explain things",
+    value: "everything and nothing!",
   },
   {
     index: "03",
     label: "currently",
-    value: "making peace with divergent series",
+    value: "quantum gravity maxxing",
   },
 ] as const;
 
@@ -94,30 +94,29 @@ export default function Home() {
         <div className="identity-grid">
           <figure className="glyph-figure">
             <QuantumGlyph />
-            <figcaption>phase portrait / not to scale</figcaption>
           </figure>
 
           <div className="identity-copy">
-            <p className="eigen-equation" aria-label="H psi equals E psi">
-              H|ψ⟩ = E|ψ⟩
+            <p className="eigen-note">
+              ∃ caffeine ∈ ℝ⁺: ||Ψ(caffeine) - Ψ*|| &lt; ε
             </p>
             <h1 id="site-title">
-              <span>eigen</span>state
+              <span className="name-blue">Arnav</span>{" "}
+              <span className="name-mauve">Mittal</span>
             </h1>
             <p className="intro">
-              hi, i&apos;m akhil — interested in{" "}
-              <span className="accent-blue">mathematical physics</span>,
-              scientific computing, and{" "}
-              <span className="accent-mauve">small programs</span> that explain
-              things.
+              hi, i&apos;m arnav, a student interested in{" "}
+              <span className="accent-blue">theoretical physics</span>,{" "}
+              <span className="accent-mauve">mathematics</span>,{" "}
+              <span className="accent-blue">technology</span>, and{" "}
+              <span className="accent-mauve">more!</span>
             </p>
           </div>
         </div>
 
-        <aside className="personal-index" aria-label="A few things about Akhil">
+        <aside className="personal-index" aria-label="A few things about Arnav">
           <div className="personal-index-heading">
             <span>a few things about me</span>
-            <span>the short version</span>
           </div>
 
           <div className="personal-index-grid">
