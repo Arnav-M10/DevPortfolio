@@ -33,29 +33,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body::before,
-body::after {
-  position: fixed;
-  z-index: 0;
-  top: -6rem;
-  width: min(34rem, 52vw);
-  height: 11rem;
-  content: "";
-  pointer-events: none;
-  border-radius: 50%;
-  filter: blur(76px);
-}
-
-body::before {
-  left: 12%;
-  background: rgb(125 211 252 / 0.1);
-}
-
-body::after {
-  right: 10%;
-  background: rgb(240 171 252 / 0.085);
-}
-
 ::selection {
   color: var(--background);
   background: var(--mauve);
@@ -399,17 +376,9 @@ figure {
 
 .constant-mark:focus-visible,
 .site-nav a:focus-visible,
-.social-link:focus-visible,
-.route-back:focus-visible {
+.social-link:focus-visible {
   outline: 1px solid var(--baby-blue);
   outline-offset: 0.35rem;
-}
-
-.page-transition {
-  width: 100%;
-  height: 100%;
-  transform-origin: 50% 44%;
-  animation: page-settle 460ms ease-out both;
 }
 
 .spatial-transition {
@@ -432,45 +401,24 @@ figure {
   will-change: transform, opacity;
 }
 
-.spatial-page-exit {
-  z-index: 1;
-  pointer-events: none;
-}
-
 .spatial-page-enter {
   z-index: 2;
 }
 
 .direction-right .spatial-page-enter {
-  animation: spatial-enter-from-right 620ms cubic-bezier(0.22, 0.75, 0.2, 1) both;
-}
-
-.direction-right .spatial-page-exit {
-  animation: spatial-exit-to-left 620ms cubic-bezier(0.22, 0.75, 0.2, 1) both;
+  animation: spatial-enter-from-right 650ms cubic-bezier(0.25, 0.1, 0.25, 1) both;
 }
 
 .direction-left .spatial-page-enter {
-  animation: spatial-enter-from-left 620ms cubic-bezier(0.22, 0.75, 0.2, 1) both;
-}
-
-.direction-left .spatial-page-exit {
-  animation: spatial-exit-to-right 620ms cubic-bezier(0.22, 0.75, 0.2, 1) both;
+  animation: spatial-enter-from-left 650ms cubic-bezier(0.25, 0.1, 0.25, 1) both;
 }
 
 .direction-up .spatial-page-enter {
-  animation: spatial-enter-from-top 620ms cubic-bezier(0.22, 0.75, 0.2, 1) both;
-}
-
-.direction-up .spatial-page-exit {
-  animation: spatial-exit-to-bottom 620ms cubic-bezier(0.22, 0.75, 0.2, 1) both;
+  animation: spatial-enter-from-top 650ms cubic-bezier(0.25, 0.1, 0.25, 1) both;
 }
 
 .direction-down .spatial-page-enter {
-  animation: spatial-enter-from-bottom 620ms cubic-bezier(0.22, 0.75, 0.2, 1) both;
-}
-
-.direction-down .spatial-page-exit {
-  animation: spatial-exit-to-top 620ms cubic-bezier(0.22, 0.75, 0.2, 1) both;
+  animation: spatial-enter-from-bottom 650ms cubic-bezier(0.25, 0.1, 0.25, 1) both;
 }
 
 .landing-shell,
@@ -1347,18 +1295,6 @@ h1 span {
   line-height: 1.8;
 }
 
-.route-back {
-  display: inline-block;
-  margin-top: 1.6rem;
-  color: var(--baby-blue);
-  font-size: 0.84rem;
-  text-decoration: none;
-}
-
-.route-back:hover {
-  color: var(--mauve);
-}
-
 @keyframes orbit-a-spin {
   from {
     transform: rotate(28deg);
@@ -1470,148 +1406,47 @@ h1 span {
   }
 }
 
-@keyframes route-home-hero-arrive {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 2.65rem, 0) scale(0.94);
-  }
-  52% {
-    opacity: 0.82;
-    transform: translate3d(0, 0.58rem, 0) scale(0.997);
-  }
-  78% {
-    opacity: 1;
-    transform: translate3d(0, -0.07rem, 0) scale(1.002);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-}
-
 @keyframes spatial-enter-from-right {
   from {
-    opacity: 0.2;
-    transform: translate3d(24vw, 0, 0);
+    opacity: 0.55;
+    transform: translate3d(16vw, 0, 0);
   }
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes spatial-exit-to-left {
-  from {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    opacity: 0.2;
-    transform: translate3d(-24vw, 0, 0);
   }
 }
 
 @keyframes spatial-enter-from-left {
   from {
-    opacity: 0.2;
-    transform: translate3d(-24vw, 0, 0);
+    opacity: 0.55;
+    transform: translate3d(-16vw, 0, 0);
   }
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes spatial-exit-to-right {
-  from {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    opacity: 0.2;
-    transform: translate3d(24vw, 0, 0);
   }
 }
 
 @keyframes spatial-enter-from-top {
   from {
-    opacity: 0.2;
-    transform: translate3d(0, -22vh, 0);
+    opacity: 0.55;
+    transform: translate3d(0, -14vh, 0);
   }
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes spatial-exit-to-bottom {
-  from {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    opacity: 0.2;
-    transform: translate3d(0, 22vh, 0);
   }
 }
 
 @keyframes spatial-enter-from-bottom {
   from {
-    opacity: 0.2;
-    transform: translate3d(0, 22vh, 0);
+    opacity: 0.55;
+    transform: translate3d(0, 14vh, 0);
   }
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes spatial-exit-to-top {
-  from {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    opacity: 0.2;
-    transform: translate3d(0, -22vh, 0);
-  }
-}
-
-@keyframes route-content-arrive {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 9rem, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0.5rem, 0);
-  }
-}
-
-@keyframes page-settle {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes liquid-page-in {
-  0% {
-    opacity: 0;
-    filter: blur(7px);
-    transform: translateY(0.7rem) scale(0.992);
-  }
-  55% {
-    opacity: 0.86;
-    filter: blur(1.5px);
-    transform: translateY(-0.08rem) scale(1.001);
-  }
-  100% {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0) scale(1);
   }
 }
 
@@ -1910,14 +1745,12 @@ h1 span {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .page-transition,
   .quantum-halo,
   .quantum-orbit,
   .quantum-wave,
   .quantum-state,
   .quantum-cat,
   .route-home-hero,
-  .route-content,
   .spatial-page,
   .pixel-cat,
   .pixel-head,

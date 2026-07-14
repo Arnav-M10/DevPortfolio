@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 const sections = {
@@ -83,9 +82,6 @@ export default async function SectionPage({ params }: SectionPageProps) {
         </span>
         <h2 id="section-title">{content.title}</h2>
         <p className="route-copy">{content.copy}</p>
-        <Link className="route-back" href="/">
-          x₀ ← local frame
-        </Link>
       </section>
     </main>
   );

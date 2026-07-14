@@ -70,7 +70,7 @@ export function SiteHeader() {
             <span className="route-home-title">
               <span>eigen</span>state
             </span>
-            <small>home / local frame</small>
+            <small>home / ground state</small>
           </span>
         </Link>
       </div>
