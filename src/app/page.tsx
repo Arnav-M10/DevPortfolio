@@ -1,65 +1,137 @@
-import Image from "next/image";
+import { QuantumGlyph } from "@/components/quantum-glyph";
+
+const fieldNotes = [
+  {
+    index: "01",
+    label: "studying",
+    value: "math + physics",
+  },
+  {
+    index: "02",
+    label: "building",
+    value: "small programs that explain things",
+  },
+  {
+    index: "03",
+    label: "currently",
+    value: "making peace with divergent series",
+  },
+] as const;
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="landing-shell">
+      <div className="ambient-marks" aria-hidden="true">
+        <span className="ambient-mark mark-one">∂?</span>
+        <span className="ambient-mark mark-two">t + ε</span>
+        <span className="ambient-mark mark-three">∞ − 1</span>
+        <span className="ambient-mark mark-four">x₁</span>
+        <span className="ambient-mark mark-five">∇·B = 0</span>
+        <span className="ambient-mark mark-six">ℏ</span>
+        <span className="ambient-mark mark-seven">e^(iπ) + 1 = 0</span>
+        <span className="ambient-mark mark-eight">ζ(s)</span>
+        <span className="ambient-mark mark-nine">Δx Δp</span>
+        <span className="ambient-mark mark-ten">S¹ ↪ ℝ²</span>
+        <span className="ambient-mark mark-eleven">Rμν − ½Rgμν</span>
+        <span className="ambient-mark mark-twelve">∫𝒟φ</span>
+        <span className="ambient-mark mark-thirteen">χ(M)</span>
+        <span className="ambient-mark mark-fourteen">P(A|B)</span>
+        <span className="ambient-mark mark-fifteen">c = ℏ = 1</span>
+        <span className="ambient-mark mark-sixteen">∮γ</span>
+        <span className="ambient-mark mark-seventeen">[x, p] = iℏ</span>
+        <span className="ambient-mark mark-eighteen">|ψ|²</span>
+        <span className="ambient-mark mark-nineteen">Γ(½) = √π</span>
+        <span className="ambient-mark mark-twenty">SO(3)</span>
+        <span className="ambient-mark mark-twenty-one">∇²</span>
+        <span className="ambient-mark mark-twenty-two">δ(x)</span>
+        <span className="ambient-mark mark-twenty-three">⟨x⟩</span>
+        <span className="ambient-mark mark-twenty-four">L²(ℝ)</span>
+        <span className="ambient-mark mark-twenty-five">ω² = k/m</span>
+        <span className="ambient-mark mark-twenty-six">ΔS ≥ 0</span>
+        <span className="ambient-mark mark-twenty-seven">∂Σ</span>
+        <span className="ambient-mark mark-twenty-eight">rank(A)</span>
+        <span className="ambient-mark mark-twenty-nine">|0⟩ + |1⟩</span>
+        <span className="ambient-mark mark-thirty">∮ B · dl</span>
+        <span className="ambient-mark long-mark mark-thirty-one">
+          ∫ₘ R√|g| d⁴x
+        </span>
+        <span className="ambient-mark long-mark mark-thirty-two">
+          iℏ ∂|ψ⟩/∂t = Ĥ|ψ⟩
+        </span>
+        <span className="ambient-mark long-mark mark-thirty-three">
+          ∇×E = −∂B/∂t
+        </span>
+        <span className="ambient-mark long-mark mark-thirty-four">
+          Gμν + Λgμν = 8πGTμν
+        </span>
+        <span className="ambient-mark long-mark mark-thirty-five">
+          ∑ₙ₌₀∞ (−1)ⁿx²ⁿ⁺¹/(2n + 1)!
+        </span>
+        <span className="ambient-mark long-mark mark-thirty-six">
+          ⟨ψ|Â|ψ⟩ / ⟨ψ|ψ⟩
+        </span>
+        <span className="ambient-mark long-mark mark-thirty-seven">
+          d²x/dt² + ω²x = 0
+        </span>
+        <span className="ambient-mark long-mark mark-thirty-eight">
+          limₙ→∞ (1 + 1/n)ⁿ
+        </span>
+        <span className="ambient-mark long-mark mark-thirty-nine">
+          ∮ᶜ F · dr = ∬ₛ (∇×F) · dS
+        </span>
+        <span className="ambient-mark long-mark mark-forty">
+          ∂μTᵘᵛ = 0
+        </span>
+        <span className="ambient-mark long-mark mark-forty-one">
+          π₁(S¹) ≅ ℤ
+        </span>
+        <span className="ambient-mark long-mark mark-forty-two">
+          {"𝓕{∂f/∂x} = iξf̂(ξ)"}
+        </span>
+      </div>
+
+      <section className="identity" aria-labelledby="site-title">
+        <div className="identity-grid">
+          <figure className="glyph-figure">
+            <QuantumGlyph />
+            <figcaption>phase portrait / not to scale</figcaption>
+          </figure>
+
+          <div className="identity-copy">
+            <p className="eigen-equation" aria-label="H psi equals E psi">
+              H|ψ⟩ = E|ψ⟩
+            </p>
+            <h1 id="site-title">
+              <span>eigen</span>state
+            </h1>
+            <p className="intro">
+              hi, i&apos;m akhil — interested in{" "}
+              <span className="accent-blue">mathematical physics</span>,
+              scientific computing, and{" "}
+              <span className="accent-mauve">small programs</span> that explain
+              things.
+            </p>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+        <aside className="personal-index" aria-label="A few things about Akhil">
+          <div className="personal-index-heading">
+            <span>a few things about me</span>
+            <span>the short version</span>
+          </div>
+
+          <div className="personal-index-grid">
+            {fieldNotes.map((note) => (
+              <div className="personal-entry" key={note.index}>
+                <small>
+                  {note.index} / {note.label}
+                </small>
+                <p>{note.value}</p>
+              </div>
+            ))}
+          </div>
+        </aside>
+      </section>
+    </main>
   );
 }
