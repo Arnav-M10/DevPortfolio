@@ -3,6 +3,7 @@ import { GeistMono } from "geist/font/mono";
 
 import { SiteHeader } from "@/components/site-header";
 import { QuantumCat } from "@/components/quantum-cat";
+import { SpatialPageTransition } from "@/components/spatial-page-transition";
 import { VisitorCount } from "@/components/visitor-count";
 
 import "./globals.css";
@@ -22,7 +23,7 @@ export default function RootLayout({
         <SiteHeader />
         <QuantumCat />
         <VisitorCount />
-        {children}
+        <SpatialPageTransition>{children}</SpatialPageTransition>
       </body>
     </html>
   );
