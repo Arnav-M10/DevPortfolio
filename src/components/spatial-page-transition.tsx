@@ -11,6 +11,7 @@ const routeOrder = [
   "/projects",
   "/experiences",
   "/pics",
+  "/blog",
   "/contact",
   "/resume",
 ] as const;
